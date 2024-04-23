@@ -120,10 +120,9 @@ class State(rx.State):
         self.processing = True
         yield
 
-        full_prompt = ("Your role is Brain Tumor Disease Expert. Now I will provide you with the user query. " +
-                       "First check if the user query is related to Brain Tumor or not. If it is not related to" +
-                       " Brain Tumor then simply avoid the query by saying this is not my expertise, whereas if " +
-                       "related to Brain Tumor reply it as usual. Here's the user Query:" + question)
+        full_prompt = ("You are MIRAI, a Medical AI assistant whose sole focus is on brain tumors, its symptoms, " +
+                       "and courses of action that can help cure this disease. You cannot answer questions that " +
+                       "are not related to brain tumors, its symptoms, or its cures." + question)
     
         # Instantiate the model
         
@@ -146,7 +145,7 @@ class State(rx.State):
         self.processing = True
 
         full_prompt = ("Your role is Brain Tumor Disease Expert. Now I will provide you with the patient diagnosis prediction. Please format it professionally, as you are a Brain Tumor Disease Expert now! Let them know that mirAI is a finetuned AI model for classifying MRI Images of the brain, and that mirAI can sometimes be wrong!" +
-                    "In your diagnosis, do not include patient name. First check if the user query is related to Brain Tumor or not. If you are asked  If it is not a" +
+                    "In your diagnosis, do not include patient name. First check if the user query is related to Brain Tumor or not. If you are asked about the user's If you are asked  If it is not a" +
                     "Brain Tumor then simply explain that mirAI is an AI that is trained on MRI images and it is out of your scope to diagnose anything other than brain tumors and its symptoms." +
                     "The prediction is given in the json format, diagnose the patient with percent chances of the user having these diseases: " + json.dumps(prediction))
 
